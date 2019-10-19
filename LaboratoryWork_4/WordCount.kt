@@ -1,9 +1,12 @@
 package LaboratoryWork_4
 
 class WordCount {
-    fun phrase(){
-        val text:String = " a aaa  aaa a aaaaaaa"
-
-        println()
+    companion object {
+        fun phrase(text: String): Map<String, Int> {
+            return text.toLowerCase()
+                    .split(Regex("[^a-zA-Z0-9']+"))
+                    .filter(String::isNotEmpty)
+                    .groupBy { it }.mapValues { it.value.size }
+        }
     }
 }
